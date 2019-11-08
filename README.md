@@ -32,8 +32,8 @@ or
 	conda install -c bioconda PLOGS
 
 ## Usage and Documentation
-* identifing marker genes for cell clusters:
-		PLOGS has the option to slot into the spot occupied by `scanpy.tl.rank_genes_groups()` in the scanpy workflow](https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html). The basic syntax to run on scanpy's AnnData object is as follows:
+* identifing marker genes for cell clusters: <br>
+PLOGS has the option to slot into the spot occupied by `scanpy.tl.rank_genes_groups()` in the scanpy workflow](https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html). The basic syntax to run on scanpy's AnnData object is as follows:
 ```python
 import PLOGS
 PLOGS.get_DEG_single(rdata, adata)
