@@ -43,7 +43,7 @@ or
 PLOGS.get_DEG_multiple(rdata, adata) #find genes that are differentially expressed in one or more  cell types
 ```
 the `rdata` is the anndata after `sc.pp.normalize_per_cell(adata)` and `sc.pp.log1p(adata)` in scanpy;<br>
-the `adata` is the annData processed by scanpy from `sc.pp.highly_variable_genes` to `sc.tl.leiden(adata)`.<by>
+the `adata` is the annData processed by scanpy from `sc.pp.highly_variable_genes` to `sc.tl.leiden(adata)`.<br>
 You can provide which `adata.obs` column to use for via the `group_key` parameter. This defaults to `'leiden'`, which is created by scanpy when you run `sc.tl.leiden(adata)`.
 
 * calculate the pseudotime of genes and profile genes map accoding to cell map:<br>
