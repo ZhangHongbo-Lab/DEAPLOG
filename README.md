@@ -2,7 +2,7 @@
 
 PLOGS is a tool to identify marker genes for cell clusters, calculate the pseudotime of genes and profile genes map accoding to cell map. It can be directly used in the [scanpy](https://scanpy.readthedocs.io/en/latest/) workflow. 
 
-<p align="center"><img src="figures/PLOGS.png" alt="PLOGS" width="50%"></p>
+<p align="center"><img src="figures/PLOGS_1.png" alt="PLOGS" width="50%"></p>
 
 PLOGS consists of three core functions: 
 * (i) `get_DEG_single` to find genes that are differentially expressed in only one cell type based on normalized raw counts of scRNA-seq data; 
