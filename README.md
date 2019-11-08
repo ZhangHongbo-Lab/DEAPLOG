@@ -32,7 +32,7 @@ or
 	conda install -c bioconda PLOGS
 
 ## Usage and Documentation
-### identifing marker genes for cell clusters: <br>
+### 1. identifing marker genes for cell clusters: <br>
 PLOGS has the option to slot into the spot occupied by `scanpy.tl.rank_genes_groups()` in the scanpy workflow](https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html). The basic syntax to run on scanpy's AnnData object is as follows:
 ```python
 import PLOGS
@@ -46,7 +46,7 @@ the `rdata` is the anndata after `sc.pp.normalize_per_cell(adata)` and `sc.pp.lo
 the `adata` is the annData processed by scanpy from `sc.pp.highly_variable_genes` to `sc.tl.leiden(adata)`.<br>
 You can provide which `adata.obs` column to use for via the `group_key` parameter. This defaults to `'leiden'`, which is created by scanpy when you run `sc.tl.leiden(adata)`.
 
-### calculate the pseudotime of genes and profile genes map accoding to cell map:<br>
+### 2. calculate the pseudotime of genes and profile genes map accoding to cell map:<br>
 ```python
 import PLOGS
 PLOGS.get_genes_location_pseudotime(rdata, adata)
