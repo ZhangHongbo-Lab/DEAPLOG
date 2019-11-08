@@ -42,8 +42,8 @@ or
 ```python
 PLOGS.get_DEG_multiple(rdata, adata) #find genes that are differentially expressed in one or more  cell types
 ```
-the `rdata` is the anndata after `sc.pp.normalize_per_cell(adata)` and `sc.pp.log1p(adata)` in scanpy;
-the `adata` is the annData processed by scanpy from `sc.pp.highly_variable_genes` to `sc.tl.leiden(adata)`.
+the `rdata` is the anndata after `sc.pp.normalize_per_cell(adata)` and `sc.pp.log1p(adata)` in scanpy;<br>
+the `adata` is the annData processed by scanpy from `sc.pp.highly_variable_genes` to `sc.tl.leiden(adata)`.<by>
 You can provide which `adata.obs` column to use for via the `group_key` parameter. This defaults to `'leiden'`, which is created by scanpy when you run `sc.tl.leiden(adata)`.
 
 * calculate the pseudotime of genes and profile genes map accoding to cell map:<br>
@@ -51,11 +51,11 @@ You can provide which `adata.obs` column to use for via the `group_key` paramete
 import PLOGS
 PLOGS.get_genes_location_pseudotime(rdata, adata)
 ```
-the `rdata` is the anndata after `sc.pp.normalize_per_cell(adata)` and `sc.pp.log1p(adata)` in scanpy;
-the `adata` is the annData processed by scanpy from `sc.pp.highly_variable_genes` to `sc.tl.leiden(adata)`.
+the `rdata` is the anndata after `sc.pp.normalize_per_cell(adata)` and `sc.pp.log1p(adata)` in scanpy;<br>
+the `adata` is the annData processed by scanpy from `sc.pp.highly_variable_genes` to `sc.tl.leiden(adata)`.<br>
 You can provide:<br>
 * which `adata.obs` column to use for via the `group_key` parameter. This defaults to `'leiden'`, which is created by scanpy when you run `sc.tl.leiden(adata)`
-* `markers_s` or `markers_m` to use for via the `gene_matrix` parameter. This defaults to `'markers_s'`, which is created by PLOGS when you run `PLOGS.get_DEG_single(rdata, adata)` and saved in `adata.uns` column; the `marker_m` is created by PLOGS when you run `PLOGS.get_DEG_multiple(rdata, adata)` and saved in `adata.uns` column.
+* `'markers_s'` or `'markers_m'` to use for via the `gene_matrix` parameter. This defaults to `'markers_s'`, which is created by PLOGS when you run `PLOGS.get_DEG_single(rdata, adata)` and saved in `adata.uns` column; the `'marker_m'` is created by PLOGS when you run `PLOGS.get_DEG_multiple(rdata, adata)` and saved in `adata.uns` column.
 * which `adata.obsm` column to use for via the `obsm` parameter.
 ## Example Notebooks
 
