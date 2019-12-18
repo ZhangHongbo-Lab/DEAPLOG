@@ -25,11 +25,7 @@ If you use PLOGS in your work, please cite the [paper](https://xxx.com):
 
 PLOGS depends on numpy, scipy, pandas, scanpy,anndata. The package is available on pip and conda, and can be easily installed as follows:
 
-	pip3 install PLOGS
-
-or
-
-	conda install -c bioconda PLOGS
+	pip3 install plogsc
 
 ## Usage and Documentation
 ### 1. identifing marker genes for cell clusters: <br>
@@ -57,8 +53,3 @@ You can provide:<br>
 * which `adata.obs` column to use for via the `group_key` parameter. This defaults to `'leiden'`, which is created by scanpy when you run `sc.tl.leiden(adata)`
 * `'markers_s'` or `'markers_m'` to use for via the `gene_matrix` parameter. This defaults to `'markers_s'`, which is created by PLOGS when you run `PLOGS.get_DEG_single(rdata, adata)` and saved in `adata.uns` column; the `'marker_m'` is created by PLOGS when you run `PLOGS.get_DEG_multiple(rdata, adata)` and saved in `adata.uns` column.
 * which `adata.obsm` column to use for via the `obsm` parameter.
-## Example Notebooks
-
-* The [PBMC_markers_identification.ipynb](https://nbviewer.jupyter.org/github/Teichlab/bbknn/blob/master/examples/pancreas.ipynb) is a demonstration to identify marker genes;
-
-* The [PBMC_gene_map.ipynb](https://nbviewer.jupyter.org/github/Teichlab/bbknn/blob/master/examples/pancreas.ipynb) is a demonstration to calculate the pseudotime of genes and profile genes map accoding to cell map. 
