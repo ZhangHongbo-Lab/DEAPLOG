@@ -11,7 +11,7 @@ PLOGS consists of three core functions:
 
 ## Citation
 
-If you use PLOGS in your work, please cite the [paper](https://xxx.com):
+If you use PLOGS in your work, please cite the paper:
 
 	@article{BaoZhang2019PLOGS,
 	  title={PLOGS:Pseudotemporal Locating and Ordering of Gene by Single-cell},
