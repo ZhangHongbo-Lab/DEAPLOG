@@ -1,55 +1,57 @@
-# PLOGS(Pseudotemporal Locating and Ordering of Gene by Single-cell)
+# DEAPLOG(Differentially Expression Analysis and Pseudotemporal Locating and Ordering of Gene by Single-cell RNA-seq data)
 
-PLOGS is a tool to identify marker genes for cell clusters, calculate the pseudotime of genes and profile genes map accoding to cell map. It can be directly used in the [scanpy](https://scanpy.readthedocs.io/en/latest/) workflow. 
+DEAPLOG is a tool to perform differentially expression analysis for cell clusters and other conditions, calculate the pseudotime of genes and profile genes coordinates accoding to the embedding coordinates of cells.
 
 <p align="center"><img src="figures/PLOGS_1.png" alt="PLOGS" width="50%"></p>
 
-PLOGS consists of three core functions: 
-* (i) `get_DEG_single` to find genes that are differentially expressed in only one cell type based on normalized raw counts of scRNA-seq data; 
-* (ii) `get_DEG_multiple` to find genes that are differentially expressed in one or more  cell types based on normalized raw counts of scRNA-seq data; 
-* (iii) `get_genes_pseudotime_location` to calculate the pseudotemporal expression of individual genes based on pseudotime ordering of cells and to locate genes into suitable coordinates based on the cells’ locations. 
+DEAPLOG consists of three core functions: 
+* (i) `get_DEG_uniq` to find genes that are differentially expressed in only one cell type based on normalized raw counts of scRNA-seq data; 
+* (ii) `get_DEG_multi` to find genes that are differentially expressed in one or more  cell types based on normalized raw counts of scRNA-seq data; 
+* (iii) `get_genes_location_pseudotime` to calculate the pseudotemporal expression of individual genes based on pseudotime ordering of cells and to locate genes into suitable coordinates based on the embedding coordinates of cells, such as 'X_umap', 'X_diffmap' and 'X_tsne'. 
 
 ## Citation
 
 If you use PLOGS in your work, please cite the paper:
 
 	@article{BaoZhang2019PLOGS,
-	  title={PLOGS:Pseudotemporal Locating and Ordering of Gene by Single-cell},
+	  title={DEAPLOG:Differentially Expression Analysis and Pseudotemporal Locating and Ordering of Gene by Single-cell RNA-seq Data},
 	  author={BaoZhang},
 	  doi={xxx},
 	  journal={xxx},
-	  year={2019}
+	  year={2022}
 	}
 
 ## Installation
 
 PLOGS depends on numpy, scipy, pandas, scanpy,anndata. The package is available on pip and conda, and can be easily installed as follows:
 
-	pip install plogsc
+	pip install DEAPLOG
 
 ## Usage and Documentation
 ### 1. identifing marker genes for cell clusters: <br>
-PLOGS has the option to slot into the spot occupied by `scanpy.tl.rank_genes_groups()` in the scanpy workflow](https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html). The basic syntax to run on scanpy's AnnData object is as follows:
+The inputs of DEAPLOG is the AnnData object of normlized counts of scRNA-seq data with pre-annotated cell clusters.  
 ```python
-import plogsc
-plogsc.get_DEG_single(rdata, adata) #find genes that are differentially expressed in only one cell type
+DEAPLOG.get_DEG_uniq(rdata, adata,group_key='leiden',power=8,ratio=0.2,p_threshold=0.01,q_threshold=0.05) #find genes that are differentially expressed in only one cell type
 ```
 or
 ```python
-plogsc.get_DEG_multiple(rdata, adata) #find genes that are differentially expressed in one or more  cell types
+DEAPLOG.get_DEG_multi(rdata, adata,group_key='leiden',power=8,ratio=0.2,p_threshold=0.01,q_threshold=0.05) #find genes that are differentially expressed in one or more  cell types
 ```
-the `rdata` is the anndata after `sc.pp.normalize_per_cell(adata)` and `sc.pp.log1p(adata)` in scanpy;<br>
-the `adata` is the annData processed by scanpy from `sc.pp.highly_variable_genes` to `sc.tl.leiden(adata)`.<br>
-You can provide which `adata.obs` column to use for via the `group_key` parameter. This defaults to `'leiden'`, which is created by scanpy when you run `sc.tl.leiden(adata)`.
-
+the `rdata`: the Anndata of normlized counts of scRNA-seq data;<br>
+the `adata`: the Anndata of scRNA-seq data with pre-annotated cell clusters;<br>
+the `group_key`: the label for cell clusters;<br>
+the `power`: a parameter for nonlinear regression of gene expression pattern;<br>
+the `ratio`: the proportion of gene expression in cell cluter;<br>
+the `ratio`: the proportion of gene expression in cell cluter,the value is between 0 and 1;<br>
+the `p_threshold` : the threshold of p-value. the value is between 0 and 1;<br>
+the `q_threshold` : the threshold of q_value. the value is between 0 and 1;<br>
 ### 2. calculate the pseudotime of genes and profile genes map accoding to cell map:<br>
 ```python
-import plogsc
-plogsc.get_genes_location_pseudotime(rdata, adata)
+DEAPLOG.get_genes_location_pseudotime(rdata, adata,group_key='leiden',power=8,gene_matrix= markers_s,obsm='X_umap',)
 ```
-the `rdata` is the anndata after `sc.pp.normalize_per_cell(adata)` and `sc.pp.log1p(adata)` in scanpy;<br>
-the `adata` is the annData processed by scanpy from `sc.pp.highly_variable_genes` to `sc.tl.leiden(adata)`.<br>
-You can provide:<br>
-* which `adata.obs` column to use for via the `group_key` parameter. This defaults to `'leiden'`, which is created by scanpy when you run `sc.tl.leiden(adata)`
-* `'markers_s'` or `'markers_m'` to use for via the `gene_matrix` parameter. This defaults to `'markers_s'`, which is created by PLOGS when you run `get_DEG_single(rdata, adata)` and saved in `adata.uns` column; the `'marker_m'` is created by PLOGS when you run `get_DEG_multiple(rdata, adata)` and saved in `adata.uns` column.
-* which `adata.obsm` column to use for via the `obsm` parameter.
+the `rdata`: the Anndata of normlized counts of scRNA-seq data;<br>
+the `adata`: the Anndata of scRNA-seq data with pre-annotated cell clusters;<br>
+the `group_key`: the label for cell clusters;<br>
+the `power`: a parameter for nonlinear regression of gene expression pattern;<br><br>
+the `gene_matrix`: a data.frame producted by get_DEG_uniq or get_DEG_multi.
+the `obsm`: the keys of adata.obsm. 
