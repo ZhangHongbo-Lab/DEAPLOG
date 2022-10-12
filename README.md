@@ -25,7 +25,7 @@ If you use PLOGS in your work, please cite the paper:
 
 PLOGS depends on numpy, scipy, pandas, scanpy,anndata. The package is available on pip and conda, and can be easily installed as follows:
 
-	pip install DEAPLOG
+	pip install deaplog
 
 ## Usage and Documentation
 ### 1. identifing marker genes for cell clusters: <br>
