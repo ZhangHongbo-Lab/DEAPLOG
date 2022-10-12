@@ -2,7 +2,7 @@
 
 DEAPLOG is a tool to perform differentially expression analysis for cell clusters and other conditions, calculate the pseudotime of genes and profile genes coordinates accoding to the embedding coordinates of cells.
 
-<p align="center"><img src="figures/PLOGS_1.png" alt="PLOGS" width="50%"></p>
+<p align="center"><img src="figures/The_framework_of_DEAPLOG.jpg" alt="DEAPLOG" width="50%"></p>
 
 DEAPLOG consists of three core functions: 
 * (i) `get_DEG_uniq` to find genes that are differentially expressed in only one cell type based on normalized raw counts of scRNA-seq data; 
