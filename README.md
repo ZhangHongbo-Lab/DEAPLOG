@@ -2,7 +2,7 @@
 
 DEAPLOG is a tool to perform differentially expression analysis for cell clusters and other conditions, calculate the pseudotime of genes and profile genes coordinates accoding to the embedding coordinates of cells.
 
-<p align="center"><img src="figures/The_framework_of_DEAPLOG.jpg" alt="DEAPLOG" width="50%"></p>
+<p align="center"><img src="figures/The_framework_of_DEAPLOG.jpg" alt="DEAPLOG" width="100%"></p>
 
 DEAPLOG consists of three core functions: 
 * (i) `get_DEG_uniq` to find genes that are differentially expressed in only one cell type based on normalized raw counts of scRNA-seq data; 
@@ -11,9 +11,9 @@ DEAPLOG consists of three core functions:
 
 ## Citation
 
-If you use PLOGS in your work, please cite the paper:
+If you use DEAPLOG in your work, please cite the paper:
 
-	@article{BaoZhang2019PLOGS,
+	@article{BaoZhang2022DEAPLOG,
 	  title={DEAPLOG:Differentially Expression Analysis and Pseudotemporal Locating and Ordering of Gene by Single-cell RNA-seq Data},
 	  author={BaoZhang},
 	  doi={xxx},
@@ -31,11 +31,11 @@ PLOGS depends on numpy, scipy, pandas, scanpy,anndata. The package is available 
 ### 1. identifing marker genes for cell clusters: <br>
 The inputs of DEAPLOG is the AnnData object of normlized counts of scRNA-seq data with pre-annotated cell clusters.  
 ```python
-DEAPLOG.get_DEG_uniq(rdata, adata,group_key='leiden',power=8,ratio=0.2,p_threshold=0.01,q_threshold=0.05) #find genes that are differentially expressed in only one cell type
+deaplog.get_DEG_uniq(rdata, adata,group_key='leiden',power=8,ratio=0.2,p_threshold=0.01,q_threshold=0.05) #find genes that are differentially expressed in only one cell type
 ```
 or
 ```python
-DEAPLOG.get_DEG_multi(rdata, adata,group_key='leiden',power=8,ratio=0.2,p_threshold=0.01,q_threshold=0.05) #find genes that are differentially expressed in one or more  cell types
+deaplog.get_DEG_multi(rdata, adata,group_key='leiden',power=8,ratio=0.2,p_threshold=0.01,q_threshold=0.05) #find genes that are differentially expressed in one or more  cell types
 ```
 the `rdata`: the Anndata of normlized counts of scRNA-seq data;<br>
 the `adata`: the Anndata of scRNA-seq data with pre-annotated cell clusters;<br>
@@ -47,7 +47,7 @@ the `p_threshold` : the threshold of p-value. the value is between 0 and 1;<br>
 the `q_threshold` : the threshold of q_value. the value is between 0 and 1;<br>
 ### 2. calculate the pseudotime of genes and profile genes map accoding to cell map:<br>
 ```python
-DEAPLOG.get_genes_location_pseudotime(rdata, adata,group_key='leiden',power=8,gene_matrix= markers_s,obsm='X_umap',)
+deaplog.get_genes_location_pseudotime(rdata, adata,group_key='leiden',power=8,gene_matrix= markers_s,obsm='X_umap',)
 ```
 the `rdata`: the Anndata of normlized counts of scRNA-seq data;<br>
 the `adata`: the Anndata of scRNA-seq data with pre-annotated cell clusters;<br>
