@@ -9,17 +9,6 @@ DEAPLOG consists of three core functions:
 * (ii) `get_DEG_multi` to find genes that are differentially expressed in one or more  cell types based on normalized raw counts of scRNA-seq data; 
 * (iii) `get_genes_location_pseudotime` to calculate the pseudotemporal expression of individual genes based on pseudotime ordering of cells and to locate genes into suitable coordinates based on the embedding coordinates of cells, such as 'X_umap', 'X_diffmap' and 'X_tsne'. 
 
-## Citation
-
-If you use DEAPLOG in your work, please cite the paper:
-
-	@article{BaoZhang2022DEAPLOG,
-	  title={DEAPLOG:Differentially Expression Analysis and Pseudotemporal Locating and Ordering of Gene by Single-cell RNA-seq Data},
-	  author={BaoZhang},
-	  doi={xxx},
-	  journal={xxx},
-	  year={2022}
-	}
 
 ## Installation
 
