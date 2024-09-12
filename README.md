@@ -20,11 +20,11 @@ PLOGS depends on numpy, scipy, pandas, scanpy,anndata. The package is available 
 ### 1. identifing marker genes for cell clusters: <br>
 The inputs of DEAPLOG is the AnnData object of normlized counts of scRNA-seq data with pre-annotated cell clusters.  
 ```python
-deaplog.get_DEG_uniq(rdata, adata,group_key='leiden',power=8,ratio=0.2,p_threshold=0.01,q_threshold=0.05) #find genes that are differentially expressed in only one cell type
+deaplog.get_DEG_uniq(rdata, adata,group_key='leiden',power=11,ratio=0.2,p_threshold=0.01,q_threshold=0.05) #find genes that are differentially expressed in only one cell type
 ```
 or
 ```python
-deaplog.get_DEG_multi(rdata, adata,group_key='leiden',power=8,ratio=0.2,p_threshold=0.01,q_threshold=0.05) #find genes that are differentially expressed in one or more  cell types
+deaplog.get_DEG_multi(rdata, adata,group_key='leiden',power=11,ratio=0.2,p_threshold=0.01,q_threshold=0.05) #find genes that are differentially expressed in one or more  cell types
 ```
 the `rdata`: the Anndata of normlized counts of scRNA-seq data;<br>
 the `adata`: the Anndata of scRNA-seq data with pre-annotated cell clusters;<br>
@@ -36,7 +36,7 @@ the `p_threshold` : the threshold of p-value. the value is between 0 and 1;<br>
 the `q_threshold` : the threshold of q_value. the value is between 0 and 1;<br>
 ### 2. calculate the pseudotime of genes and profile genes map accoding to cell map:<br>
 ```python
-deaplog.get_genes_location_pseudotime(rdata, adata,group_key='leiden',power=8,gene_matrix= markers_s,obsm='X_umap',)
+deaplog.get_genes_location_pseudotime(rdata, adata,group_key='leiden',power=11,gene_matrix= markers_s,obsm='X_umap',)
 ```
 the `rdata`: the Anndata of normlized counts of scRNA-seq data;<br>
 the `adata`: the Anndata of scRNA-seq data with pre-annotated cell clusters;<br>
